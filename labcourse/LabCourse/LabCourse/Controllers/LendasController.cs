@@ -11,47 +11,47 @@ namespace LabCourse.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfesoriController : ControllerBase
+    public class LendasController : ControllerBase
     {
         private readonly ProfesoriDB _context;
 
-        public ProfesoriController(ProfesoriDB context)
+        public LendasController(ProfesoriDB context)
         {
             _context = context;
         }
 
-        // GET: api/Profesori
+        // GET: api/Lendas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Profesori>>> GetProfesoret()
+        public async Task<ActionResult<IEnumerable<Lenda>>> GetLenda()
         {
-            return await _context.Profesoret.Include(p => p.Departamenti).Include(p => p.Lenda).ToListAsync();
+            return await _context.Lenda.ToListAsync();
         }
 
-        // GET: api/Profesori/5
+        // GET: api/Lendas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Profesori>> GetProfesori(int id)
-        {   
-            var profesori = await _context.Profesoret.FindAsync(id);
+        public async Task<ActionResult<Lenda>> GetLenda(int id)
+        {
+            var lenda = await _context.Lenda.FindAsync(id);
 
-            if (profesori == null)
+            if (lenda == null)
             {
                 return NotFound();
             }
 
-            return profesori;
+            return lenda;
         }
 
-        // PUT: api/Profesori/5
+        // PUT: api/Lendas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfesori(int id, Profesori profesori)
+        public async Task<IActionResult> PutLenda(int id, Lenda lenda)
         {
-            if (id != profesori.id)
+            if (id != lenda.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(profesori).State = EntityState.Modified;
+            _context.Entry(lenda).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace LabCourse.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProfesoriExists(id))
+                if (!LendaExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +72,36 @@ namespace LabCourse.Controllers
             return NoContent();
         }
 
-        // POST: api/Profesori
+        // POST: api/Lendas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Profesori>> PostProfesori(Profesori profesori)
+        public async Task<ActionResult<Lenda>> PostLenda(Lenda lenda)
         {
-            _context.Profesoret.Add(profesori);
+            _context.Lenda.Add(lenda);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProfesori", new { id = profesori.id }, profesori);
+            return CreatedAtAction("GetLenda", new { id = lenda.id }, lenda);
         }
 
-        // DELETE: api/Profesori/5
+        // DELETE: api/Lendas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProfesori(int id)
+        public async Task<IActionResult> DeleteLenda(int id)
         {
-            var profesori = await _context.Profesoret.FindAsync(id);
-            if (profesori == null)
+            var lenda = await _context.Lenda.FindAsync(id);
+            if (lenda == null)
             {
                 return NotFound();
             }
 
-            _context.Profesoret.Remove(profesori);
+            _context.Lenda.Remove(lenda);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProfesoriExists(int id)
+        private bool LendaExists(int id)
         {
-            return _context.Profesoret.Any(e => e.id == id);
+            return _context.Lenda.Any(e => e.id == id);
         }
     }
 }

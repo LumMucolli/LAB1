@@ -28,6 +28,8 @@ namespace LabCourse
         {
 
             services.AddControllers();
+            services.AddControllers();
+            services.AddControllers();
 
             services.AddDbContext<ProfesoriDB>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));

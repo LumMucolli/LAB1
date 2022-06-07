@@ -7,17 +7,13 @@ using System.Threading.Tasks;
 
 namespace LabCourse.models
 {
-    public class Profesori
+    public class PiketProvimit
     {
         [Key]
         public int id { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string EmriMbiemri { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string email { get; set; }
+        public int Piket { get; set; }
+        public int Studentiid { get; set; }
         public int Lendaid { get; set; }
         public Lenda Lenda { get; set; }
-        public int Departamentiid { get; set; }
-        public Departamenti Departamenti { get; set; }
     }
 }

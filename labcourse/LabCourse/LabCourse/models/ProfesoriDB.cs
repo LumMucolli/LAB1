@@ -14,5 +14,8 @@ namespace LabCourse.models
         }
 
         public DbSet<Profesori> Profesoret { get; set; }
+        public DbSet<PiketProvimit> PiketProvimit { get; set; }
+        public DbSet<Lenda> Lenda { get; set; }
+        public DbSet<Departamenti> Departamenti { get; set; }
     }
 }

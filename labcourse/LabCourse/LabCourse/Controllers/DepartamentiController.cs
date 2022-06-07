@@ -11,47 +11,47 @@ namespace LabCourse.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfesoriController : ControllerBase
+    public class DepartamentiController : ControllerBase
     {
         private readonly ProfesoriDB _context;
 
-        public ProfesoriController(ProfesoriDB context)
+        public DepartamentiController(ProfesoriDB context)
         {
             _context = context;
         }
 
-        // GET: api/Profesori
+        // GET: api 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Profesori>>> GetProfesoret()
+        public async Task<ActionResult<IEnumerable<Departamenti>>> GetDepartamenti()
         {
-            return await _context.Profesoret.Include(p => p.Departamenti).Include(p => p.Lenda).ToListAsync();
+            return await _context.Departamenti.ToListAsync();
         }
 
-        // GET: api/Profesori/5
+        // GET: api/Departamenti/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Profesori>> GetProfesori(int id)
-        {   
-            var profesori = await _context.Profesoret.FindAsync(id);
+        public async Task<ActionResult<Departamenti>> GetDepartamenti(int id)
+        {
+            var departamenti = await _context.Departamenti.FindAsync(id);
 
-            if (profesori == null)
+            if (departamenti == null)
             {
                 return NotFound();
             }
 
-            return profesori;
+            return departamenti;
         }
 
-        // PUT: api/Profesori/5
+        // PUT: api/Departamenti/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfesori(int id, Profesori profesori)
+        public async Task<IActionResult> PutDepartamenti(int id, Departamenti departamenti)
         {
-            if (id != profesori.id)
+            if (id != departamenti.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(profesori).State = EntityState.Modified;
+            _context.Entry(departamenti).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace LabCourse.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProfesoriExists(id))
+                if (!DepartamentiExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +72,36 @@ namespace LabCourse.Controllers
             return NoContent();
         }
 
-        // POST: api/Profesori
+        // POST: api/Departamenti
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Profesori>> PostProfesori(Profesori profesori)
+        public async Task<ActionResult<Departamenti>> PostDepartamenti(Departamenti departamenti)
         {
-            _context.Profesoret.Add(profesori);
+            _context.Departamenti.Add(departamenti);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProfesori", new { id = profesori.id }, profesori);
+            return CreatedAtAction("GetDepartamenti", new { id = departamenti.id }, departamenti);
         }
 
-        // DELETE: api/Profesori/5
+        // DELETE: api/Departamenti/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProfesori(int id)
+        public async Task<IActionResult> DeleteDepartamenti(int id)
         {
-            var profesori = await _context.Profesoret.FindAsync(id);
-            if (profesori == null)
+            var departamenti = await _context.Departamenti.FindAsync(id);
+            if (departamenti == null)
             {
                 return NotFound();
             }
 
-            _context.Profesoret.Remove(profesori);
+            _context.Departamenti.Remove(departamenti);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProfesoriExists(int id)
+        private bool DepartamentiExists(int id)
         {
-            return _context.Profesoret.Any(e => e.id == id);
+            return _context.Departamenti.Any(e => e.id == id);
         }
     }
 }
