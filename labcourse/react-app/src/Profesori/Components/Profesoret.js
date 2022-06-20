@@ -56,6 +56,7 @@ const onDelete = id =>{
                                             <TableCell>{record.email}</TableCell>
                                             <TableCell>{record.lendaid}</TableCell>
                                             <TableCell>{record.departamentiid}</TableCell>
+                                            <TableCell>{record.emriLendes}</TableCell>
                                             <TableCell>
                                                 <ButtonGroup>
                                                     <Button><EditIcon color="primary" onClick={()=>{setCurrentId(record.id)}}/></Button>

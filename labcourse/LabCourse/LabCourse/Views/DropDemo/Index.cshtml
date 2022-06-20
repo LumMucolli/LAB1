@@ -1,0 +1,10 @@
+﻿@model LabCourse.models.Profa
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bind DropDownList</h1>
+
+<label asp-for="Emri"></label>
+<select asp-for="Id" asp-items="@(new SelectList(@ViewBag.listofitems,"Id","Emri"))"></select>
+

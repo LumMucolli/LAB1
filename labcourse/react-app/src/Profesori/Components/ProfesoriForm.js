@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import { Grid, TextField, withStyles, Button, Select, OutlinedInput, MenuItem } from "@material-ui/core";
+import { Grid, TextField, withStyles, Button, Select} from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../actions/Profesori";    
+
 
 const styles = theme => ({
     root: {
@@ -28,6 +29,15 @@ const initialFieldValues = {
 }
 
 const ProfesoriForm = ({ classes, ...props }) => {
+
+    //per emertimin e inputit Select
+    const [selected, setSelected] = useState('');
+    const handleChange = event => {
+    console.log('Label 👉️', event.target.selectedOptions[0].label);
+    console.log(event.target.value);
+    setSelected(event.target.value); 
+  };
+
 
     const validate =(fieldValues = values) =>{
         let temp={...errors}
@@ -93,20 +103,45 @@ const ProfesoriForm = ({ classes, ...props }) => {
                     onChange={handleInputChange}
                     {...(errors.email && {error:true, helperText:errors.email})}
                     />
-                    <TextField
-                    name = "lendaid"
-                    variant = "outlined"
-                    label = "Lenda"
-                    value={values.lendaid}
-                    onChange={handleInputChange}
-                    />
-                    <TextField
-                    name = "departamentiid"
-                    variant = "outlined"
-                    label = "Departamenti"
-                    value={values.departamentiid}
-                    onChange={handleInputChange}
-                    />
+
+                    <div>
+                    <select
+                     value={values.lendaid} 
+                     onChange={handleInputChange}
+                     name = "lendaid"
+                     variant = "outlined"
+                     label = "Lenda"
+                     style = {{marginLeft:'8px', marginTop:'7px', width:'230px', height: '60px',borderRadius:'5px', color:'gray'}}
+                     >
+                        <option disabled={true} value="">
+                        Lenda
+                        </option>
+                        <option value="1">LAB 1</option>
+                        <option value="2">Algoritme 1</option>
+                        <option value="3">Algoritme 2</option>
+                        <option value="4">Inxhinieri Softuerike</option>
+                        <option value="5">Sistemet Operative</option>
+                    </select>
+                    </div>
+
+                    <div>
+                    <select
+                     value={values.departamentiid} 
+                     onChange={handleInputChange}
+                     name = "departamentiid"
+                     variant = "outlined"
+                     label = "Departamenti"
+                     style = {{marginLeft:'8px', marginTop:'14px', width:'230px', height: '60px', borderRadius:'5px', color:'gray'}}
+                     >
+                        <option disabled={true} value="">
+                        Departamenti
+                        </option>
+                        <option value="1">Juridik</option>
+                        <option value="2">Shkenca Kompjuterike</option>
+                        <option value="3">Ekonomik</option>
+                        <option value="4">Shkenca politike</option>
+                    </select>
+                    </div>
                     <div>
                         <Button
                         variant="contained"

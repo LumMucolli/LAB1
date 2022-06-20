@@ -7,11 +7,13 @@ export default class Navbarcomp extends Component {
       <div>
   <Navbar bg="primary" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">SMIS</Navbar.Brand>
+    <Navbar.Brand href="Login">SMIS</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="Departamenti">Departamenti</Nav.Link>
       <Nav.Link href="Lendet">Lenda</Nav.Link>
       <Nav.Link href="Profesori">Profesori</Nav.Link>
+      <Nav.Link href="Provimet">Provimet</Nav.Link>
+      <Nav.Link href="Login" style={{marginLeft: '190%', color: "white"}}>LOGOUT</Nav.Link>
     </Nav>
     </Container>
   </Navbar>

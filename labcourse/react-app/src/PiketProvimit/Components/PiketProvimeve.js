@@ -44,7 +44,6 @@ const onDelete = id =>{
                                     <TableCell>ID Studenti</TableCell>
                                     <TableCell>Piket e Provimit</TableCell>
                                     <TableCell>ID Lenda</TableCell>
-                                    <TableCell>Lenda</TableCell>
                                     <TableCell></TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
