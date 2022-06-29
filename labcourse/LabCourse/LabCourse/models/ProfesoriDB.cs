@@ -22,5 +22,9 @@ namespace LabCourse.models
         public DbSet<LabCourse.models.Register> Register { get; set; }
         public DbSet<Profa> Profa { get; set; }
         public DbSet<Provimet> Provimet { get; set; }
+        public DbSet<LabCourse.models.Studenti> Studenti { get; set; }
+        public DbSet<LabCourse.models.ParaqitProvimet> ParaqitProvimet { get; set; }
+        public DbSet<LabCourse.models.Semestri> Semestri { get; set; }
+        public DbSet<LabCourse.models.Grupi> Grupi { get; set; }
     }
 }

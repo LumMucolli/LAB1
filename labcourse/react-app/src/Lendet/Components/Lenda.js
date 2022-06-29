@@ -41,6 +41,7 @@ const onDelete = id =>{
                         <Table>
                             <TableHead className={classes.root}>
                                 <TableRow>
+                                    <TableCell>ID</TableCell>
                                     <TableCell>Emri i Lendes</TableCell>
                                     <TableCell>ECTS</TableCell>
                                     <TableCell></TableCell>
@@ -50,6 +51,7 @@ const onDelete = id =>{
                                 {
                                     props.LendaList.map((record, index)=>{
                                         return(<TableRow key={index} hover>
+                                            <TableCell>{record.id}</TableCell>
                                             <TableCell>{record.emriLendes}</TableCell>
                                             <TableCell>{record.ects}</TableCell>
                                             <TableCell>

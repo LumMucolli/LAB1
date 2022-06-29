@@ -10,7 +10,8 @@ namespace LabCourse.models
     {
         [Key]
         public int Id { get; set; }
-        public string Lenda { get; set; }
+        public int Lendaid { get; set; }
+        public Lenda Lenda { get; set; }
         public string Kategoria { get; set; }
         public string Profesori { get; set; }
         public string DataProvimit { get; set; }

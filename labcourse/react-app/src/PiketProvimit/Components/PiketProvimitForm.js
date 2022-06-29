@@ -23,7 +23,7 @@ const styles = theme => ({
 const initialFieldValues = {
     piket: '',
     studentiid: '',
-    lendaid: ''
+    lendaid: ""
 }
 
 const PiketProvimitForm = ({ classes, ...props }) => {
@@ -32,8 +32,8 @@ const PiketProvimitForm = ({ classes, ...props }) => {
         let temp={...errors}
         if('piket' in fieldValues)
         temp.piket = fieldValues.piket?"":"This field is required."
-        if('studnetiid' in fieldValues)
-        temp.studnetiid = fieldValues.studnetiid?"":"This field is required."   
+        if('studentiid' in fieldValues)
+        temp.studentiid = fieldValues.studentiid?"":"This field is required."   
         if('lendaid' in fieldValues)
         temp.lendaid = fieldValues.lendaid ? "" :"This field is required."
         setErrors({
@@ -84,24 +84,24 @@ const PiketProvimitForm = ({ classes, ...props }) => {
                     <TextField
                     name = "studentiid"
                     variant = "outlined"
-                    label = "ID Studenti"
+                    label = "Studenti id"
                     value={values.studentiid}
                     onChange={handleInputChange}
-                    {...(errors.studentiid && {error:true, helperText:errors.studentiid})}
                     />
                     <TextField
-                    name = "lendaid"
-                    variant = "outlined"
-                    label = "ID Lenda"
+                    name="lendaid"
+                    variant="outlined"
+                    label="Lenda id"
                     value={values.lendaid}
+                    helperText={errors.lendaid}
                     onChange={handleInputChange}
-                    {...(errors.lendaid && {error:true, helperText:errors.lendaid})}
-                    />
+                    {...(errors.lendaid && { error: true, helperText: errors.lendaid })}/>
                     <div>
                         <Button
                         variant="contained"
                         color="primary"
                         type="submit"
+                        onClick = {() => window.location.reload(false)}
                         >
                             Submit
                         </Button>

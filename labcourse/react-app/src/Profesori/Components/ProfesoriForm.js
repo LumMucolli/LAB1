@@ -147,6 +147,7 @@ const ProfesoriForm = ({ classes, ...props }) => {
                         variant="contained"
                         color="primary"
                         type="submit"
+                        onClick = {() => window.location.reload(false)}
                         >
                             Submit
                         </Button>

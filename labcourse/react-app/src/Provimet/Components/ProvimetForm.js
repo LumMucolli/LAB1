@@ -22,7 +22,7 @@ const styles = theme => ({
 })
 
 const initialFieldValues = {
-    lenda : '',
+    lendaid : '',
     kategoria : '',
     profesori : '',
     dataProvimit : '',
@@ -33,8 +33,8 @@ const ProvimetForm = ({ classes, ...props }) => {
 
     const validate =(fieldValues = values) =>{
         let temp={...errors}
-        if('lenda' in fieldValues)
-        temp.lenda = fieldValues.lenda?"":"This field is required."
+        if('lendaid' in fieldValues)
+        temp.lendaid = fieldValues.lenda?"":"This field is required."
         if('profesori' in fieldValues)
         temp.profesori = fieldValues.profesori?"":"This field is required."   
         setErrors({
@@ -75,10 +75,11 @@ const ProvimetForm = ({ classes, ...props }) => {
         <form autoComplete="off" noValidate className={classes.root} onSubmit={handleSubmit}>
             <Grid container>
                 <Grid item xs={6}>
+                    <div>
                     <select
-                     value={values.lenda} 
+                     value={values.lendaid} 
                      onChange={handleInputChange}
-                     name = "lenda"
+                     name = "lendaid"
                      variant = "outlined"
                      label = "Lenda"
                      style = {{marginLeft:'8px', marginTop:'7px', width:'230px', height: '60px',borderRadius:'5px', color:'gray'}}
@@ -92,6 +93,8 @@ const ProvimetForm = ({ classes, ...props }) => {
                         <option value="4">Shkrim Shkencor dhe Akademik</option>
                         <option value="5">Teknikat e zgjedhjes se problemeve</option>
                     </select>
+                    </div>
+                    <div>
                     <select
                      value={values.kategoria} 
                      onChange={handleInputChange}
@@ -103,9 +106,11 @@ const ProvimetForm = ({ classes, ...props }) => {
                         <option disabled={true} value="">
                         Kategoria
                         </option>
-                        <option value="1">Obligative</option>
-                        <option value="2">Zgjedhore</option>
+                        <option value="Obligative">Obligative</option>
+                        <option value="Zgjedhore">Zgjedhore</option>
                     </select>
+                    </div>
+                    <div>
                     <select
                      value={values.profesori} 
                      onChange={handleInputChange}
@@ -123,6 +128,7 @@ const ProvimetForm = ({ classes, ...props }) => {
                         <option value="4">Krenare Pireva</option>
                         <option value="5">Ramiz Hoxha</option>
                     </select>
+                    </div>
                     <TextField
                     name = "dataProvimit"
                     variant = "outlined"
@@ -142,6 +148,7 @@ const ProvimetForm = ({ classes, ...props }) => {
                         variant="contained"
                         color="primary"
                         type="submit"
+                        onClick = {() => window.location.reload(false)}
                         >
                             Submit
                         </Button>

@@ -48,23 +48,6 @@ namespace LabCourse.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Provimet",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Lenda = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Kategoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Profesori = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DataProvimit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    KohaProvimit = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Provimet", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Register",
                 columns: table => new
                 {
@@ -76,6 +59,44 @@ namespace LabCourse.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Register", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Semestri",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Lokacioni = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Semestrat = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Orari = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Semestri", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Studenti",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmriMbiemri = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    DataLindjes = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Qyteti = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    email = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Departamentiid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Studenti", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Studenti_Departamenti_Departamentiid",
+                        column: x => x.Departamentiid,
+                        principalTable: "Departamenti",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,6 +118,45 @@ namespace LabCourse.Migrations
                         principalTable: "Profa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Grupi",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Zgjedhgrupin = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Studentiid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Grupi", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Grupi_Studenti_Studentiid",
+                        column: x => x.Studentiid,
+                        principalTable: "Studenti",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ParaqitProvimet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Lendaid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ParaqitProvimet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ParaqitProvimet_Lenda_Lendaid",
+                        column: x => x.Lendaid,
+                        principalTable: "Lenda",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,10 +208,43 @@ namespace LabCourse.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Provimet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Lendaid = table.Column<int>(type: "int", nullable: false),
+                    Kategoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Profesori = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DataProvimit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    KohaProvimit = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Provimet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Provimet_Lenda_Lendaid",
+                        column: x => x.Lendaid,
+                        principalTable: "Lenda",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Grupi_Studentiid",
+                table: "Grupi",
+                column: "Studentiid");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Lenda_ProfaId",
                 table: "Lenda",
                 column: "ProfaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ParaqitProvimet_Lendaid",
+                table: "ParaqitProvimet",
+                column: "Lendaid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PiketProvimit_Lendaid",
@@ -167,12 +260,28 @@ namespace LabCourse.Migrations
                 name: "IX_Profesoret_Lendaid",
                 table: "Profesoret",
                 column: "Lendaid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Provimet_Lendaid",
+                table: "Provimet",
+                column: "Lendaid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Studenti_Departamentiid",
+                table: "Studenti",
+                column: "Departamentiid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Grupi");
+
+            migrationBuilder.DropTable(
                 name: "Login");
+
+            migrationBuilder.DropTable(
+                name: "ParaqitProvimet");
 
             migrationBuilder.DropTable(
                 name: "PiketProvimit");
@@ -187,10 +296,16 @@ namespace LabCourse.Migrations
                 name: "Register");
 
             migrationBuilder.DropTable(
-                name: "Departamenti");
+                name: "Semestri");
+
+            migrationBuilder.DropTable(
+                name: "Studenti");
 
             migrationBuilder.DropTable(
                 name: "Lenda");
+
+            migrationBuilder.DropTable(
+                name: "Departamenti");
 
             migrationBuilder.DropTable(
                 name: "Profa");

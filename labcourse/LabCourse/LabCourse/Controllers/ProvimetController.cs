@@ -24,7 +24,7 @@ namespace LabCourse.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Provimet>>> GetProvimet()
         {
-            return await _context.Provimet.ToListAsync();
+            return await _context.Provimet.Include(p => p.Lenda).ToListAsync();
         }
 
         // GET: api/Provimet/5

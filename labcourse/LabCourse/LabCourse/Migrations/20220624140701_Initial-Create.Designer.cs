@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabCourse.Migrations
 {
     [DbContext(typeof(ProfesoriDB))]
-    [Migration("20220619120608_Initial-Create")]
+    [Migration("20220624140701_Initial-Create")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,26 @@ namespace LabCourse.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Departamenti");
+                });
+
+            modelBuilder.Entity("LabCourse.models.Grupi", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Studentiid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Zgjedhgrupin")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Studentiid");
+
+                    b.ToTable("Grupi");
                 });
 
             modelBuilder.Entity("LabCourse.models.Lenda", b =>
@@ -75,6 +95,23 @@ namespace LabCourse.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Login");
+                });
+
+            modelBuilder.Entity("LabCourse.models.ParaqitProvimet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Lendaid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Lendaid");
+
+                    b.ToTable("ParaqitProvimet");
                 });
 
             modelBuilder.Entity("LabCourse.models.PiketProvimit", b =>
@@ -162,13 +199,15 @@ namespace LabCourse.Migrations
                     b.Property<string>("KohaProvimit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Lenda")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Lendaid")
+                        .HasColumnType("int");
 
                     b.Property<string>("Profesori")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Lendaid");
 
                     b.ToTable("Provimet");
                 });
@@ -191,11 +230,83 @@ namespace LabCourse.Migrations
                     b.ToTable("Register");
                 });
 
+            modelBuilder.Entity("LabCourse.models.Semestri", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Lokacioni")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Orari")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Semestrat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Semestri");
+                });
+
+            modelBuilder.Entity("LabCourse.models.Studenti", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DataLindjes")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Departamentiid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmriMbiemri")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Qyteti")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Departamentiid");
+
+                    b.ToTable("Studenti");
+                });
+
+            modelBuilder.Entity("LabCourse.models.Grupi", b =>
+                {
+                    b.HasOne("LabCourse.models.Studenti", "Studenti")
+                        .WithMany()
+                        .HasForeignKey("Studentiid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Studenti");
+                });
+
             modelBuilder.Entity("LabCourse.models.Lenda", b =>
                 {
                     b.HasOne("LabCourse.models.Profa", null)
                         .WithMany("Lendas")
                         .HasForeignKey("ProfaId");
+                });
+
+            modelBuilder.Entity("LabCourse.models.ParaqitProvimet", b =>
+                {
+                    b.HasOne("LabCourse.models.Lenda", "Lenda")
+                        .WithMany()
+                        .HasForeignKey("Lendaid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lenda");
                 });
 
             modelBuilder.Entity("LabCourse.models.PiketProvimit", b =>
@@ -226,6 +337,28 @@ namespace LabCourse.Migrations
                     b.Navigation("Departamenti");
 
                     b.Navigation("Lenda");
+                });
+
+            modelBuilder.Entity("LabCourse.models.Provimet", b =>
+                {
+                    b.HasOne("LabCourse.models.Lenda", "Lenda")
+                        .WithMany()
+                        .HasForeignKey("Lendaid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lenda");
+                });
+
+            modelBuilder.Entity("LabCourse.models.Studenti", b =>
+                {
+                    b.HasOne("LabCourse.models.Departamenti", "Departamenti")
+                        .WithMany()
+                        .HasForeignKey("Departamentiid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Departamenti");
                 });
 
             modelBuilder.Entity("LabCourse.models.Profa", b =>

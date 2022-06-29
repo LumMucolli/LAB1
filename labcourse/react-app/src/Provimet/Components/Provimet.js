@@ -53,7 +53,7 @@ const onDelete = id =>{
                                 {
                                     props.ProvimetList.map((record, index)=>{
                                         return(<TableRow key={index} hover>
-                                            <TableCell>{record.lenda}</TableCell>
+                                            <TableCell>{record.lenda.emriLendes}</TableCell>
                                             <TableCell>{record.kategoria}</TableCell>
                                             <TableCell>{record.profesori}</TableCell>
                                             <TableCell>{record.dataProvimit}</TableCell>

@@ -41,6 +41,7 @@ const onDelete = id =>{
                         <Table>
                             <TableHead className={classes.root}>
                                 <TableRow>
+                                    <TableCell>ID</TableCell>
                                     <TableCell>Departamenti</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
@@ -49,6 +50,7 @@ const onDelete = id =>{
                                 {
                                     props.DepartamentiList.map((record, index)=>{
                                         return(<TableRow key={index} hover>
+                                            <TableCell>{record.id}</TableCell>
                                             <TableCell>{record.emriDepartamenti}</TableCell>
                                             <TableCell>
                                                 <ButtonGroup>

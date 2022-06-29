@@ -43,7 +43,7 @@ const onDelete = id =>{
                                 <TableRow>
                                     <TableCell>ID Studenti</TableCell>
                                     <TableCell>Piket e Provimit</TableCell>
-                                    <TableCell>ID Lenda</TableCell>
+                                    <TableCell>Lenda</TableCell>
                                     <TableCell></TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
@@ -54,7 +54,7 @@ const onDelete = id =>{
                                         return(<TableRow key={index} hover>
                                             <TableCell>{record.studentiid}</TableCell>
                                             <TableCell>{record.piket}</TableCell>
-                                            <TableCell>{record.lendaid}</TableCell>
+                                            <TableCell>{record.lenda.emriLendes}</TableCell>
                                             <TableCell></TableCell>
                                             <TableCell></TableCell>
                                             <TableCell>

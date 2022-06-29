@@ -12,8 +12,12 @@ export default class Navbarcomp extends Component {
       <Nav.Link href="Departamenti">Departamenti</Nav.Link>
       <Nav.Link href="Lendet">Lenda</Nav.Link>
       <Nav.Link href="Profesori">Profesori</Nav.Link>
+      <Nav.Link href="Studenti">Studenti</Nav.Link>
       <Nav.Link href="Provimet">Provimet</Nav.Link>
-      <Nav.Link href="Login" style={{marginLeft: '190%', color: "white"}}>LOGOUT</Nav.Link>
+      <Nav.Link href="PiketProvimit">PiketProvimit</Nav.Link>
+      <Nav.Link href="ParaqitProvimet">ParaqitProvimet</Nav.Link>
+      <Nav.Link href="Semestri">Semestri  </Nav.Link>
+      <Nav.Link href="Login" style={{marginLeft: '45%', color: "white"}}>LOGOUT</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
