@@ -68,14 +68,25 @@ const ParaqitProvimetForm = ({ classes, ...props }) => {
         <form autoComplete="off" noValidate className={classes.root} onSubmit={handleSubmit}>
             <Grid container>
                 <Grid item xs={6}>
-                    <TextField
-                    name="lendaid"
-                    variant="outlined"
-                    label="lendaid"
-                    value={values.lendaid}
-                    helperText={errors.lendaid}
-                    onChange={handleInputChange}
-                    {...(errors.lendaid && { error: true, helperText: errors.lendaid })}/>
+                    <div>
+                    <select
+                     value={values.lendaid} 
+                     onChange={handleInputChange}
+                     name = "lendaid"
+                     variant = "outlined"
+                     label = "lendaid"
+                     style = {{marginLeft:'8px', marginTop:'7px', width:'230px', height: '60px',borderRadius:'5px', color:'gray'}}
+                     >
+                        <option disabled={true} value="">
+                        Lenda
+                        </option>
+                        <option value="1">Lab1</option>
+                        <option value="2">Algoritme 1</option>
+                        <option value="3">Algoritme 2</option>
+                        <option value="4">BTI</option>
+                        <option value="5">Inxhinieri Softuerike</option>                   
+                    </select>
+                    </div>
                     <div>
                         <Button
                         variant="contained"
