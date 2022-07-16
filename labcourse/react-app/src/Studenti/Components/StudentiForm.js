@@ -134,8 +134,8 @@ const StudentiForm = ({ classes, ...props }) => {
                         </option>
                         <option value="1">Juridik</option>
                         <option value="2">Shkenca Kompjuterike</option>
-                        <option value="3">Ekonomik</option>
-                        <option value="4">Shkenca politike</option>
+                        <option value="3">Shkenca Politike</option>
+                        <option value="4">Ekonomik</option>
                     </select>
                     </div>
                     <div>

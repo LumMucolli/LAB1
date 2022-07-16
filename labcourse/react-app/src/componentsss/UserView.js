@@ -13,8 +13,8 @@ function UserView() {
   return(
     <Router>
       <Switch>
-        <Provider path="/semestri" store={semestriStore}><NavbarcompStudenti/><Semestri/></Provider>
-        <Provider path="/ParaqitProvimet" store={paraqitProvimetStore}><NavbarcompStudenti/><ParaqitProvimet/></Provider>
+        <Provider exact path="/semestri" store={semestriStore}><NavbarcompStudenti/><Semestri/></Provider>
+        <Provider exact path="/ParaqitProvimet" store={paraqitProvimetStore}><NavbarcompStudenti/><ParaqitProvimet/></Provider>
      </Switch>
     </Router>
   );

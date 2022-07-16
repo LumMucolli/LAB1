@@ -80,11 +80,11 @@ const ParaqitProvimetForm = ({ classes, ...props }) => {
                         <option disabled={true} value="">
                         Lenda
                         </option>
-                        <option value="1">Lab1</option>
-                        <option value="2">Algoritme 1</option>
-                        <option value="3">Algoritme 2</option>
+                        <option value="1">Algoritme</option>
+                        <option value="2">LAB 1</option>
+                        <option value="3">Inxhinieri Softuerike</option>
                         <option value="4">BTI</option>
-                        <option value="5">Inxhinieri Softuerike</option>                   
+                        <option value="4">Matematike</option>                  
                     </select>
                     </div>
                     <div>

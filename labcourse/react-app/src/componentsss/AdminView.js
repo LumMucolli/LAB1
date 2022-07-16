@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Switch } from "react-router-dom"
 import Navbarcomp from '../Components/Navbarcomp';
 
 import { Provider } from 'react-redux';
@@ -27,14 +27,14 @@ function AdminView() {
   return(
     <Router>
       <Switch>
-        <Provider path="/departamenti" store={DepartamentiStore}><Navbarcomp/><Departamenti/></Provider>
-        <Provider path="/lendet" store={LendaStore}><Navbarcomp/><Lendet/></Provider>
-        <Provider path="/profesori" store={store}><Navbarcomp/><Profesori/></Provider>
-        <Provider path="/piketprovimit" store={piketStore}><Navbarcomp/><PiketProvimeve/></Provider>
-        <Provider path="/provimet" store={ProvimetStore}><Navbarcomp/><Provimet/></Provider>
-        <Provider path="/studenti" store={studentiStore}><Navbarcomp/><Studenti/></Provider>
-        <Provider path="/semestri" store={semestriStore}><Navbarcomp/><Semestri/></Provider>
-        <Provider path="/ParaqitProvimet" store={paraqitProvimetStore}><Navbarcomp/><ParaqitProvimet/></Provider>
+        <Provider exact path="/" store={DepartamentiStore}><Navbarcomp/><Departamenti/></Provider>
+        <Provider exact path="/lendet" store={LendaStore}><Navbarcomp/><Lendet/></Provider>
+        <Provider exact path="/profesori" store={store}><Navbarcomp/><Profesori/></Provider>
+        <Provider exact path="/piketprovimit" store={piketStore}><Navbarcomp/><PiketProvimeve/></Provider>
+        <Provider exact path="/provimet" store={ProvimetStore}><Navbarcomp/><Provimet/></Provider>
+        <Provider exact path="/studenti" store={studentiStore}><Navbarcomp/><Studenti/></Provider>
+        <Provider exact path="/semestri" store={semestriStore}><Navbarcomp/><Semestri/></Provider>
+        <Provider exact path="/ParaqitProvimet" store={paraqitProvimetStore}><Navbarcomp/><ParaqitProvimet/></Provider>
      </Switch>
     </Router>
   );

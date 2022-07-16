@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Navbar, Container, Nav} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 export default class Navbarcomp extends Component {
   render() {
@@ -9,8 +10,8 @@ export default class Navbarcomp extends Component {
     <Container style={{marginLeft:'275px'}}>
     <Navbar.Brand href="Login">SMIS</Navbar.Brand>
     <Nav className="me-auto">
-      <Nav.Link href="ParaqitProvimet">ParaqitProvimet</Nav.Link>
-      <Nav.Link href="Semestri">Semestri  </Nav.Link>
+      <NavLink to="paraqitProvimet" style={{ textDecoration:"none", color:"lightblue",  marginLeft:"10px" }}>ParaqitProvimet</NavLink>
+      <NavLink to="semestri" style={{ textDecoration:"none", color:"lightblue",  marginLeft:"10px" }}>Semestri  </NavLink>
     </Nav>
     </Container>
   </Navbar>

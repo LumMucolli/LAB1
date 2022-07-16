@@ -52,6 +52,7 @@ const onDelete = id =>{
                                 {
                                     props.ProfesoriList.map((record, index)=>{
                                         return(<TableRow key={index} hover>
+                                            <TableCell>{record.id}</TableCell>
                                             <TableCell>{record.emriMbiemri}</TableCell>
                                             <TableCell>{record.email}</TableCell>
                                             <TableCell>{record.lenda.emriLendes}</TableCell>

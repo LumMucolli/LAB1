@@ -116,11 +116,11 @@ const ProfesoriForm = ({ classes, ...props }) => {
                         <option disabled={true} value="">
                         Lenda
                         </option>
-                        <option value="1">LAB 1</option>
-                        <option value="2">Algoritme 1</option>
-                        <option value="3">Algoritme 2</option>
-                        <option value="4">Inxhinieri Softuerike</option>
-                        <option value="5">Sistemet Operative</option>
+                        <option value="1">Algoritme</option>
+                        <option value="2">LAB 1</option>
+                        <option value="3">Inxhinieri Softuerike</option>
+                        <option value="4">BTI</option>
+                        <option value="5">Matematike</option>
                     </select>
                     </div>
 
@@ -138,8 +138,8 @@ const ProfesoriForm = ({ classes, ...props }) => {
                         </option>
                         <option value="1">Juridik</option>
                         <option value="2">Shkenca Kompjuterike</option>
-                        <option value="3">Ekonomik</option>
-                        <option value="4">Shkenca politike</option>
+                        <option value="3">Shkenca politike</option>
+                        <option value="4">Ekonomik</option>
                     </select>
                     </div>
                     <div>

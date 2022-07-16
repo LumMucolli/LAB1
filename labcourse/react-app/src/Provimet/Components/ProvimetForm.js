@@ -87,11 +87,11 @@ const ProvimetForm = ({ classes, ...props }) => {
                         <option disabled={true} value="">
                         Lenda   
                         </option>
-                        <option value="1">Shkenca Kompjuterike dhe Inxhinieri</option>
+                        <option value="1">Algoritme</option>
                         <option value="2">LAB 1</option>
-                        <option value="3">Algoritme 1</option>
-                        <option value="4">Shkrim Shkencor dhe Akademik</option>
-                        <option value="5">Teknikat e zgjedhjes se problemeve</option>
+                        <option value="3">Inxhinieri Softuerike</option>
+                        <option value="4">BTI</option>
+                        <option value="5">Matematike</option>
                     </select>
                     </div>
                     <div>
@@ -122,11 +122,9 @@ const ProvimetForm = ({ classes, ...props }) => {
                         <option disabled={true} value="">
                         Profesori
                         </option>
-                        <option value="1">Lavdim Menxhiqi</option>
-                        <option value="2">Blerim Zylfiu</option>
-                        <option value="3">Bertan Karahoda</option>
-                        <option value="4">Krenare Pireva</option>
-                        <option value="5">Ramiz Hoxha</option>
+                        <option value="9">Lavdim Menxhiqi</option>
+                        <option value="10">Blerim Zylfiu</option>
+                        <option value="13">Bertan Karahoda</option>
                     </select>
                     </div>
                     <TextField
